@@ -47,6 +47,9 @@ function update(f) {
     let document = editor.document;
     
     let selections = editor.selections;
+    selections.sort(function(a, b) {
+        return a.start.compareTo(b.start);
+    });
     let content = [];
     
     for (let index in selections) {
@@ -58,9 +61,6 @@ function update(f) {
     }
     
     if (content.length == editor.selections.length) {
-        content = content.sort(function(b, a) {
-            return a[4] < b[4] || (a[4] == b[4] && a[5] < b[5]);
-        });
         let raw = content.map(stuff => stuff[1]);
         let i = 0;
         
@@ -74,6 +74,13 @@ function update(f) {
             });
         });
     }
+}
+
+function sorted(l, c) {
+    for (var i = 0; i < l.length - 1; i++) {
+        if (!c(l[i], l[i + 1])) return false;
+    }
+    return true;
 }
 
 // this method is called when your extension is deactivated
