@@ -38,6 +38,11 @@ None, besides the fact that infinite loops will break the extension and you will
 
 ## Release Notes
 
+### 0.0.6
+
+Returning an array is now interpreted as what the new set of selections' content should be. Ideas like in-text sorting are now possible (for example, `(e, i, content) => content.sort((a,b)=>a-b)` with numbers)\
+Other Minor Changes Added
+
 ### 0.0.1
 
 Initial Release

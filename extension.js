@@ -30,9 +30,10 @@ function activate(context) {
             
             try {
                 let f = safeEval(code);
-                f("test", 0, ["test"]);
+                let test = f("", 0, [""]);
+                
                 lastText = uinput;
-                update(f);
+                update(f, test);
             }
             catch (e) {}
         });
@@ -42,7 +43,7 @@ function activate(context) {
 }
 exports.activate = activate;
 
-function update(f) {
+function update(f, testResult) {
     let editor = vscode.window.activeTextEditor;
     let document = editor.document;
     
@@ -61,18 +62,30 @@ function update(f) {
     }
     
     if (content.length == editor.selections.length) {
+        let replacements;
         let raw = content.map(stuff => stuff[1]);
-        let i = 0;
         
-        editor.edit(function(edit) {
-            content.forEach(info => {
-                let range = new vscode.Selection(info[2], info[3], info[4], info[5]);
-                let replacement = f(info[1], i, raw) + "";
-                edit.replace(range, replacement);
-                
-                i++;
+        if (testResult instanceof Array) {
+            replacements = f("", 0, raw);
+            editor.edit(function(edit) {
+                content.forEach((info, i) => {
+                    let range = new vscode.Selection(info[2], info[3], info[4], info[5]);
+                    let replacement = replacements[i] + "";
+                    
+                    edit.replace(range, replacement);
+                });
             });
-        });
+        }
+        else {
+            editor.edit(function(edit) {
+                content.forEach((info, i) => {
+                    let range = new vscode.Selection(info[2], info[3], info[4], info[5]);
+                    let replacement = f(info[1], i, raw) + "";
+                    
+                    edit.replace(range, replacement);
+                });
+            });
+        }
     }
 }
 

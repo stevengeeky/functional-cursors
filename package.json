@@ -1,8 +1,8 @@
 {
-    "name": "javascript-cursor",
-    "displayName": "JavaScript Cursors",
+    "name": "functional-cursors",
+    "displayName": "Functional Cursors",
     "description": "Change your cursor content on the fly with any JavaScript",
-    "version": "0.0.2",
+    "version": "0.0.6",
     "publisher": "sporiley",
     "engines": {
         "vscode": "^1.20.0"
@@ -31,6 +31,10 @@
                 }
             }
         }
+    },
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/stevengeeky/functional-cursors"
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
