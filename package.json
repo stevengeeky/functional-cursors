@@ -2,7 +2,7 @@
     "name": "functional-cursors",
     "displayName": "Functional Cursors",
     "description": "Change your cursor content on the fly with any JavaScript",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "publisher": "sporiley",
     "engines": {
         "vscode": "^1.20.0"
