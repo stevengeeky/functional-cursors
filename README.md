@@ -2,7 +2,7 @@
 
 This extension allows you to evaluate any JavaScript on the fly to generate text with an arbitrary number of cursors.
 
-![js-cursors](js-cursors.gif)
+![js-cursors](https://raw.githubusercontent.com/stevengeeky/functional-cursors/master/js-cursors.gif)
 
 ## Usage
 
