@@ -70,7 +70,7 @@ function update(f, testResult) {
             editor.edit(function(edit) {
                 content.forEach((info, i) => {
                     let range = new vscode.Selection(info[2], info[3], info[4], info[5]);
-                    let replacement = replacements[i] + "";
+                    let replacement = replacements[i % replacements.length] + "";
                     
                     edit.replace(range, replacement);
                 });
