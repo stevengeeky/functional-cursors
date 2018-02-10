@@ -27,9 +27,7 @@
             "properties": {
                 "functional-cursors.functions": {
                     "type": "object",
-                    "default": {
-                        "getDOW": "i => ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][i]"
-                    }
+                    "default": {}
                 }
             }
         }
