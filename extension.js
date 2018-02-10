@@ -58,7 +58,7 @@ function update(f) {
     }
     
     if (content.length == editor.selections.length) {
-        content.sort(function(b, a) {
+        content = content.sort(function(b, a) {
             return a[4] < b[4] || (a[4] == b[4] && a[5] < b[5]);
         });
         let raw = content.map(stuff => stuff[1]);

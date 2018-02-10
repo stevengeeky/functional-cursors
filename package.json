@@ -2,7 +2,7 @@
     "name": "javascript-cursor",
     "displayName": "JavaScript Cursors",
     "description": "Change your cursor content on the fly with any JavaScript",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "sporiley",
     "engines": {
         "vscode": "^1.20.0"
