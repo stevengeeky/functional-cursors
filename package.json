@@ -13,6 +13,7 @@
     "activationEvents": [
         "*"
     ],
+    "icon": "f-cursors.png",
     "main": "./extension",
     "contributes": {
         "commands": [
