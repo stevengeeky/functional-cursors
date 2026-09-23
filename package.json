@@ -2,16 +2,16 @@
     "name": "functional-cursors",
     "displayName": "Functional Cursors",
     "description": "Change your cursor content on the fly with any JavaScript",
-    "version": "0.0.8",
+    "version": "0.1.0",
     "publisher": "sporiley",
     "engines": {
-        "vscode": "^1.20.0"
+        "vscode": "^1.75.0"
     },
     "categories": [
         "Other"
     ],
     "activationEvents": [
-        "*"
+        "onCommand:extension.jsCursors"
     ],
     "icon": "f-cursors.png",
     "main": "./extension",
@@ -19,16 +19,20 @@
         "commands": [
             {
                 "command": "extension.jsCursors",
-                "title": "jscursor"
+                "title": "Functional Cursors: apply a JavaScript function at every cursor (jscursor)"
             }
         ],
         "configuration": {
             "type": "object",
-            "title": "JavaScript Cursors Configuration",
+            "title": "Functional Cursors",
             "properties": {
                 "functional-cursors.functions": {
                     "type": "object",
-                    "default": {}
+                    "default": {},
+                    "description": "Helper functions available inside the expression, as name -> JavaScript source. Example: {\"getDOW\": \"i => ['Mon','Tue'][i % 2]\"}",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 }
             }
         }
@@ -38,17 +42,15 @@
         "url": "https://github.com/stevengeeky/functional-cursors"
     },
     "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
+        "test": "node --test \"test/*.test.js\"",
+        "lint": "eslint extension.js lib test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "eslint": "^4.6.1",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "@types/node": "^22.0.0",
+        "@types/vscode": "^1.75.0",
+        "eslint": "^8.57.0"
     },
-    "dependencies": {
-        "safe-eval": "^0.3.0"
+    "bugs": {
+        "url": "https://github.com/stevengeeky/functional-cursors/issues"
     }
 }

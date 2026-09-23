@@ -1,7 +1,9 @@
 .vscode/**
 .vscode-test/**
 test/**
+node_modules/**
 .gitignore
 jsconfig.json
 vsc-extension-quickstart.md
 .eslintrc.json
+js-cursors.gif

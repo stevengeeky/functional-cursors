@@ -8,6 +8,8 @@ This extension allows you to evaluate any JavaScript on the fly to generate text
 
 `Ctrl+Shift+P` or `Cmd+Shift+P` and type 'jscursor.'
 
+If the function cannot be parsed, throws, or returns something that is not a string or a number, an error message says which cursor and why (nothing is changed in that case). Numbers are written as text, so `(e, i) => i` numbers your cursors 0, 1, 2, …
+
 An input field will appear in which you input a function in JS, namely
 
 ```javascript
@@ -32,11 +34,23 @@ In the example given, I have also implemented a custom function (`getDOW`) in th
 }
 ```
 
+## Security
+
+The expression is ordinary JavaScript compiled with `new Function` and run inside the VS Code extension host (strict mode, `this` undefined). It is not a sandbox: only run expressions you wrote or understand.
+
 ## Known Issues
 
-None, besides the fact that infinite loops will break the extension and you will have to restart VSCode if this happens.
+An infinite loop in your expression will hang the extension host; reload the window if that happens.
+
+## Development
+
+`npm install`, then `npm test` runs the node unit tests for the selection logic and `npm run lint` runs eslint. Press F5 in VS Code to launch the extension in a development host.
 
 ## Release Notes
+
+### 0.1.0
+
+Fixes #1: errors are shown instead of swallowed, numbers are coerced to text, array returns work again, `safe-eval` replaced by `new Function`. Requires VS Code 1.75+.
 
 ### 0.0.6
 
