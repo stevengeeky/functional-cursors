@@ -1,6 +1,5 @@
 /**
  * @name Functional Cursors
- * @author Steven O'Riley
  * @desc Change the content under every cursor with a JavaScript function
  */
 
